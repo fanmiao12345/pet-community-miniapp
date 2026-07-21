@@ -1,0 +1,75 @@
+<view class="container me-page" wx:if="{{user}}">
+  <view class="profile-hero">
+    <view class="profile-top">
+      <view class="profile-entry" bindtap="goProfile">
+        <view class="avatar-shell"><image class="profile-avatar" src="{{user.avatar}}" mode="aspectFill" /></view>
+        <view class="profile-main">
+          <view class="profile-name">{{user.nickname}}</view>
+          <view class="profile-bio">{{user.bio || '用一句话介绍你和毛孩子吧'}}</view>
+          <view wx:if="{{user.phoneBound}}" class="phone-bound"><text class="verified-dot">✓</text>手机号已验证 {{user.phoneNumberMasked}}</view>
+        </view>
+      </view>
+      <button class="edit" bindtap="editProfile">编辑</button>
+    </view>
+
+    <view class="stats">
+      <view class="stat" bindtap="goPets"><view class="number">{{pets.length}}</view><view class="stat-label">宠物</view></view>
+      <view class="divider"></view>
+      <view class="stat"><view class="number">{{posts.length}}</view><view class="stat-label">动态</view></view>
+      <view class="divider"></view>
+      <view class="stat" data-mode="following" bindtap="goRelations"><view class="number">{{user.followingCount}}</view><view class="stat-label">关注</view></view>
+      <view class="divider"></view>
+      <view class="stat" data-mode="followers" bindtap="goRelations"><view class="number">{{user.followerCount}}</view><view class="stat-label">粉丝</view></view>
+    </view>
+  </view>
+
+  <view class="quick-grid">
+    <view class="quick-item notification-quick" bindtap="goNotifications">
+      <view class="quick-icon">🔔</view>
+      <view class="quick-label">互动通知</view>
+      <view wx:if="{{unreadCount}}" class="badge">{{unreadCount > 99 ? '99+' : unreadCount}}</view>
+    </view>
+    <view class="quick-item" bindtap="goPets"><view class="quick-icon">🐾</view><view class="quick-label">宠物档案</view></view>
+    <view class="quick-item" bindtap="goFavorites"><view class="quick-icon">★</view><view class="quick-label">我的收藏</view></view>
+  </view>
+
+  <view class="section-head">
+    <view><view class="eyebrow">MY SERVICES</view><view class="section-name">我的服务</view></view>
+  </view>
+
+  <view class="card menu-card">
+    <view class="menu-item" bindtap="goBlocked">
+      <view class="menu-left"><view class="menu-icon">◉</view><view><view class="menu-label">黑名单管理</view><view class="menu-desc">查看已屏蔽的用户</view></view></view><text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goSettings">
+      <view class="menu-left"><view class="menu-icon">⚙</view><view><view class="menu-label">设置与隐私</view><view class="menu-desc">账号安全与数据管理</view></view></view><text class="menu-arrow">›</text>
+    </view>
+    <view wx:if="{{user.role === 'admin'}}" class="menu-item admin-entry" bindtap="goAdmin">
+      <view class="menu-left"><view class="menu-icon admin-icon">管</view><view><view class="menu-label">运营后台</view><view class="menu-desc">内容审核与社区治理</view></view></view><text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="resetData">
+      <view class="menu-left"><view class="menu-icon">↻</view><view><view class="menu-label">重置演示数据</view><view class="menu-desc">恢复项目初始展示内容</view></view></view><text class="menu-arrow">›</text>
+    </view>
+  </view>
+
+  <view class="section-head post-section-head">
+    <view><view class="eyebrow">MY MOMENTS</view><view class="section-name">我的动态</view></view>
+    <view class="post-count">{{posts.length}} 条</view>
+  </view>
+
+  <view wx:if="{{posts.length === 0}}" class="card empty my-empty"><text class="empty-icon">🐶</text><view class="empty-title">还没有发布动态</view><view class="empty-desc">去记录毛孩子今天的新鲜事吧</view></view>
+  <view wx:for="{{posts}}" wx:key="id" class="card compact-post" data-id="{{item.id}}" bindtap="openPost">
+    <view class="post-main-row">
+      <view class="post-copy">
+        <view class="content">{{item.content || '[图片动态]'}}</view>
+        <view class="post-meta">{{item.createdAtText}}{{item.petSnapshot.name ? ' · ' + item.petSnapshot.name : ''}}</view>
+      </view>
+      <image wx:if="{{item.images.length}}" class="post-cover" src="{{item.images[0]}}" mode="aspectFill" lazy-load="{{true}}" />
+    </view>
+    <view class="post-footer">
+      <view class="post-data"><text>♡ {{item.likeCount}}</text><text>◌ {{item.commentCount}}</text></view>
+      <view wx:if="{{item.moderationStatus !== 'approved'}}" class="review-badge {{item.moderationStatus}}">{{item.moderationStatus === 'pending' ? '审核中' : '未通过'}}</view>
+      <view wx:else class="post-arrow">查看 ›</view>
+    </view>
+  </view>
+</view>

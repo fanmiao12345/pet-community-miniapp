@@ -1,0 +1,33 @@
+<view class="container">
+  <view class="notification-header row space-between">
+    <view>
+      <view class="page-title header-title">互动通知</view>
+      <view class="muted">{{unreadCount ? unreadCount + ' 条未读' : '没有未读通知'}}</view>
+    </view>
+    <button class="mark-read" disabled="{{!unreadCount}}" bindtap="markAllRead">全部已读</button>
+  </view>
+
+  <view wx:if="{{notifications.length === 0}}" class="empty card">还没有互动通知。</view>
+  <view
+    wx:for="{{notifications}}"
+    wx:key="id"
+    class="notification card {{item.read ? '' : 'unread'}}"
+    data-id="{{item.id}}"
+    data-type="{{item.type}}"
+    data-target="{{item.targetId}}"
+    data-actor="{{item.actorId}}"
+    bindtap="openNotification"
+  >
+    <view wx:if="{{!item.read}}" class="unread-dot"></view>
+    <image class="actor-avatar" src="{{item.actorSnapshot.avatar}}" mode="aspectFill" lazy-load="{{true}}" />
+    <view class="notification-main">
+      <view>
+        <text class="actor-name">{{item.actorSnapshot.nickname}}</text>
+        <text> {{item.message}}</text>
+      </view>
+      <view class="summary">{{item.targetSummary}}</view>
+      <view class="muted time">{{item.createdAtText}}</view>
+    </view>
+    <view class="type-icon">{{item.type === 'like' ? '♡' : item.type === 'comment' ? '💬' : item.type === 'follow' ? '＋' : item.type === 'moderation' ? '✓' : 'i'}}</view>
+  </view>
+</view>

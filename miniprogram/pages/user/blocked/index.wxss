@@ -1,0 +1,6 @@
+.user-row { display: flex; align-items: center; justify-content: space-between; }
+.user-main { display: flex; align-items: center; flex: 1; min-width: 0; }
+.avatar { width: 76rpx; height: 76rpx; border-radius: 50%; margin-right: 16rpx; }
+.name { font-weight: 650; margin-bottom: 6rpx; }
+.unblock { margin: 0 0 0 16rpx; font-size: 24rpx; color: #b44236; background: #fff0ee; }
+.unblock::after { border: 0; }

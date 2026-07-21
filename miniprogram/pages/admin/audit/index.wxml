@@ -1,0 +1,13 @@
+<view class="container">
+  <view wx:if="{{loading}}" class="loading muted">正在加载…</view>
+  <view wx:if="{{!loading && logs.length === 0}}" class="empty card">暂无管理操作记录。</view>
+  <view wx:for="{{logs}}" wx:key="id" class="card log-card">
+    <view class="row space-between">
+      <view class="action">{{item.action}}</view>
+      <view class="muted time">{{item.createdAtText}}</view>
+    </view>
+    <view class="target">{{item.targetType}} · {{item.targetId}}</view>
+    <view class="muted detail">{{item.detail}}</view>
+    <view class="muted admin">管理员：{{item.adminId}}</view>
+  </view>
+</view>

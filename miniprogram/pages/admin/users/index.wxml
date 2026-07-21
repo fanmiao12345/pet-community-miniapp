@@ -1,0 +1,12 @@
+<view class="container">
+  <view wx:for="{{users}}" wx:key="id" class="card user-card">
+    <image class="avatar" src="{{item.avatar}}" mode="aspectFill" lazy-load="{{true}}" />
+    <view class="user-main">
+      <view class="row"><view class="name">{{item.nickname}}</view><view wx:if="{{item.role === 'admin'}}" class="admin-badge">管理员</view></view>
+      <view class="muted">状态：{{item.status || 'active'}}</view>
+      <view class="muted">手机号：{{item.phoneBound ? item.phoneNumberMasked : '未验证'}}</view>
+      <view wx:if="{{item.mutedUntil}}" class="muted">禁言至：{{item.mutedUntil}}</view>
+    </view>
+    <button class="manage" data-id="{{item.id}}" bindtap="manage">管理</button>
+  </view>
+</view>

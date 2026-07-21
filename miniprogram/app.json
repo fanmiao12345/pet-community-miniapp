@@ -1,0 +1,65 @@
+{
+  "pages": [
+    "pages/auth/login/index",
+    "pages/auth/privacy/index",
+    "pages/feed/index",
+    "pages/topic/index",
+    "pages/post/create",
+    "pages/me/index",
+    "pages/post/detail",
+    "pages/topic/detail",
+    "pages/pet/list",
+    "pages/pet/create",
+    "pages/pet/detail",
+    "pages/user/edit",
+    "pages/user/favorites",
+    "pages/user/profile/index",
+    "pages/user/relations/index",
+    "pages/notification/index",
+    "pages/user/blocked/index",
+    "pages/user/settings/index",
+    "pages/admin/dashboard/index",
+    "pages/admin/reports/index",
+    "pages/admin/moderation/index",
+    "pages/admin/users/index",
+    "pages/admin/audit/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "宠友圈",
+    "navigationBarBackgroundColor": "#fffaf6",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f4f1",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#8c857f",
+    "selectedColor": "#ff6f4d",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/feed/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/topic/index",
+        "text": "话题"
+      },
+      {
+        "pagePath": "pages/post/create",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/me/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "usingComponents": {
+    "post-card": "/components/post-card/index"
+  }
+}

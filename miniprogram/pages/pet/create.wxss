@@ -1,0 +1,2 @@
+.avatar-edit { text-align: center; margin-bottom: 30rpx; }
+.pet-avatar { width: 180rpx; height: 180rpx; border-radius: 42rpx; display: block; margin: 0 auto 12rpx; }

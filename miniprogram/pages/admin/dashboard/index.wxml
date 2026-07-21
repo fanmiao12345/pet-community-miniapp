@@ -1,0 +1,16 @@
+<view class="container" wx:if="{{stats}}">
+  <view class="page-title">运营概览</view>
+  <view class="stats-grid">
+    <view class="card stat"><view class="number">{{stats.userCount}}</view><view class="muted">用户</view></view>
+    <view class="card stat"><view class="number">{{stats.petCount}}</view><view class="muted">宠物</view></view>
+    <view class="card stat"><view class="number">{{stats.postCount}}</view><view class="muted">动态</view></view>
+    <view class="card stat warning"><view class="number">{{stats.pendingPostCount}}</view><view class="muted">待审内容</view></view>
+    <view class="card stat warning"><view class="number">{{stats.pendingReportCount}}</view><view class="muted">待处理举报</view></view>
+  </view>
+  <view class="card menu">
+    <view class="menu-item" bindtap="openModeration"><text>内容审核</text><text class="arrow">›</text></view>
+    <view class="menu-item" bindtap="openReports"><text>举报处理</text><text class="arrow">›</text></view>
+    <view class="menu-item" bindtap="openUsers"><text>用户管理</text><text class="arrow">›</text></view>
+    <view class="menu-item" bindtap="openAudit"><text>审计日志</text><text class="arrow">›</text></view>
+  </view>
+</view>

@@ -1,0 +1,37 @@
+.header { display: flex; align-items: center; flex-wrap: wrap; gap: 12rpx; }
+.author-entry { display: flex; align-items: center; flex: 1; min-width: 300rpx; }
+.header-info { flex: 1; margin-left: 16rpx; }
+.author { font-weight: 650; }
+.follow-button { height: 60rpx; margin: 0; padding: 0 28rpx; border-radius: 999rpx; background: #ff7a59; color: white; font-size: 25rpx; line-height: 60rpx; }
+.follow-button::after { border: 0; }
+.follow-button.following { background: #f0f1f2; color: #666c74; }
+.topic-chip { margin: 0; }
+.content { margin-top: 24rpx; font-size: 31rpx; line-height: 1.7; white-space: pre-wrap; }
+.image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8rpx; margin-top: 20rpx; }
+.image { width: 100%; height: 210rpx; border-radius: 14rpx; }
+.actions { display: flex; margin-top: 22rpx; border-top: 1rpx solid #eef0f2; padding-top: 16rpx; }
+.action { flex: 1; background: transparent; color: #6f757d; font-size: 26rpx; }
+.action::after { border: 0; }
+.action.active { color: #ff6b4a; }
+.action.danger { color: #d73a49; }
+.comment-box { display: flex; align-items: center; gap: 16rpx; }
+.comment-input { box-sizing: border-box; flex: 5; min-width: 0; height: 72rpx; padding: 0 24rpx; font-size: 28rpx; line-height: 72rpx; color: #202124; background: #f5f6f7; border-radius: 999rpx; }
+.send { box-sizing: border-box; flex: 1; height: 72rpx; margin: 0; padding: 0; background: #ff7a59; color: white; border-radius: 999rpx; font-size: 26rpx; line-height: 72rpx; text-align: center; }
+.send::after { border: 0; }
+.comment { display: flex; padding: 24rpx 0; border-bottom: 1rpx solid #f0f1f2; }
+.comment-avatar { width: 64rpx; height: 64rpx; border-radius: 50%; }
+.comment-main { flex: 1; margin-left: 16rpx; }
+.comment-author { font-weight: 600; }
+.comment-time { font-size: 22rpx; }
+.comment-content { margin-top: 10rpx; line-height: 1.55; }
+.delete-link { color: #d73a49; font-size: 22rpx; margin-top: 10rpx; }
+.small { padding: 50rpx 0; }
+
+.moderation-banner { margin: 18rpx 0; padding: 18rpx; border-radius: 14rpx; font-size: 24rpx; line-height: 1.55; }
+.moderation-banner.pending { background: #fff8e6; color: #8b6b22; }
+.moderation-banner.rejected { background: #fff0ee; color: #b44236; }
+.moderation-banner text { display: block; margin-top: 6rpx; }
+.reply-tip { margin-bottom: 12rpx; padding: 12rpx 16rpx; border-radius: 12rpx; background: #fff8e6; color: #8b6b22; font-size: 23rpx; }
+.cancel-reply { color: #d85b3d; }
+.reply-name { color: #d85b3d; }
+.comment-links { display: flex; gap: 28rpx; margin-top: 10rpx; color: #8a9099; font-size: 23rpx; }

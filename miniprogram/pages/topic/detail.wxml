@@ -1,0 +1,11 @@
+<view class="container">
+  <view wx:if="{{topic}}" class="card intro">
+    <view class="icon">{{topic.icon}}</view>
+    <view>
+      <view class="section-title"># {{topic.name}}</view>
+      <view class="muted">{{topic.description}}</view>
+    </view>
+  </view>
+  <post-card wx:for="{{posts}}" wx:key="id" post="{{item}}" bind:open="openPost" bind:author="openAuthor" bind:like="likePost" bind:favorite="favoritePost" />
+  <view wx:if="{{posts.length === 0}}" class="empty">该话题下还没有内容。</view>
+</view>

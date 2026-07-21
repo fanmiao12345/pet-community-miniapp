@@ -1,0 +1,12 @@
+<view class="container">
+  <view wx:if="{{posts.length === 0}}" class="empty card">没有待处理内容。</view>
+  <view wx:for="{{posts}}" wx:key="id" class="card moderation-card">
+    <view class="row space-between"><view class="author">{{item.authorSnapshot.nickname}}</view><view class="status {{item.moderationStatus}}">{{item.moderationStatus}}</view></view>
+    <view class="content" data-id="{{item.id}}" bindtap="openPost">{{item.content}}</view>
+    <view wx:if="{{item.moderationReason}}" class="muted reason">{{item.moderationReason}}</view>
+    <view class="actions">
+      <button class="approve" data-id="{{item.id}}" data-status="approved" bindtap="review">通过</button>
+      <button class="reject" data-id="{{item.id}}" data-status="rejected" bindtap="review">拒绝</button>
+    </view>
+  </view>
+</view>

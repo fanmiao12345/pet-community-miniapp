@@ -1,0 +1,18 @@
+<view class="container">
+  <view wx:if="{{users.length === 0}}" class="empty card">
+    {{mode === 'followers' ? '还没有粉丝。' : '还没有关注其他宠友。'}}
+  </view>
+  <view wx:for="{{users}}" wx:key="id" class="user-row card" data-id="{{item.id}}" bindtap="openUser">
+    <image class="user-avatar" src="{{item.avatar}}" mode="aspectFill" lazy-load="{{true}}" />
+    <view class="user-main">
+      <view class="user-name">{{item.nickname}}</view>
+      <view class="muted user-bio">{{item.bio}}</view>
+    </view>
+    <button
+      wx:if="{{!item.isMe}}"
+      class="follow-button {{item.followedByMe ? 'following' : ''}}"
+      data-id="{{item.id}}"
+      catchtap="followUser"
+    >{{item.followedByMe ? '已关注' : '+ 关注'}}</button>
+  </view>
+</view>

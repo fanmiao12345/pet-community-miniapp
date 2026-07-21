@@ -1,0 +1,11 @@
+.author { font-weight: 650; }
+.status { padding: 5rpx 12rpx; border-radius: 999rpx; font-size: 21rpx; }
+.status.pending { background: #fff8e6; color: #8b6b22; }
+.status.rejected { background: #fff0ee; color: #b44236; }
+.content { margin-top: 18rpx; line-height: 1.6; }
+.reason { margin-top: 12rpx; }
+.actions { display: flex; gap: 16rpx; margin-top: 20rpx; }
+.actions button { flex: 1; margin: 0; font-size: 24rpx; }
+.approve { background: #eaf8ef; color: #2f7d4b; }
+.reject { background: #fff0ee; color: #b44236; }
+.actions button::after { border: 0; }

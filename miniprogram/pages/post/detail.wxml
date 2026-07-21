@@ -1,0 +1,74 @@
+<view class="container" wx:if="{{post}}">
+  <view class="card detail-card">
+    <view class="header">
+      <view class="author-entry" bindtap="openAuthor">
+        <image class="avatar" src="{{post.authorSnapshot.avatar}}" mode="aspectFill" />
+        <view class="header-info">
+          <view class="author">{{post.authorSnapshot.nickname}}</view>
+          <view class="muted">{{post.petSnapshot.name ? post.petSnapshot.name + ' · ' : ''}}{{post.createdAtText}}</view>
+        </view>
+      </view>
+      <button
+        wx:if="{{author && !author.isMe}}"
+        class="follow-button {{author.followedByMe ? 'following' : ''}}"
+        catchtap="followAuthor"
+      >{{author.followedByMe ? '已关注' : '+ 关注'}}</button>
+      <view wx:if="{{post.topicName}}" class="chip topic-chip"># {{post.topicName}}</view>
+    </view>
+    <view wx:if="{{post.moderationStatus !== 'approved'}}" class="moderation-banner {{post.moderationStatus}}">
+      {{post.moderationStatus === 'pending' ? '内容正在审核，仅自己可见。' : '内容未通过审核，仅自己可见。'}}
+      <text wx:if="{{post.moderationReason}}">{{post.moderationReason}}</text>
+    </view>
+    <view wx:if="{{post.content}}" class="content">{{post.content}}</view>
+    <view wx:elif="{{post.images.length}}" class="content muted">分享了 {{post.images.length}} 张照片</view>
+    <view wx:if="{{post.images.length}}" class="image-grid">
+      <image wx:for="{{post.images}}" wx:key="*this" class="image" src="{{item}}" data-src="{{item}}" mode="aspectFill" lazy-load="{{true}}" bindtap="previewImage" />
+    </view>
+    <view wx:if="{{post.moderationStatus === 'approved'}}" class="actions">
+      <button class="action {{post.likedByMe ? 'active' : ''}}" bindtap="likePost">♡ {{post.likeCount}}</button>
+      <button class="action {{post.favoritedByMe ? 'active' : ''}}" bindtap="favoritePost">☆ {{post.favoriteCount}}</button>
+      <button wx:if="{{isMine}}" class="action danger" bindtap="deletePost">删除</button>
+      <button wx:else class="action danger" bindtap="reportPost">举报</button>
+    </view>
+  </view>
+
+  <view wx:if="{{post.moderationStatus === 'approved'}}" class="card">
+    <view class="section-title">评论 {{post.commentCount}}</view>
+    <view wx:if="{{replyTarget}}" class="reply-tip row space-between">
+      <text>回复 @{{replyTarget.authorSnapshot.nickname}}</text>
+      <text class="cancel-reply" bindtap="cancelReply">取消</text>
+    </view>
+    <view class="comment-box">
+      <input
+        class="comment-input"
+        placeholder="{{replyTarget ? '写下回复…' : '写下友善、真实的交流…'}}"
+        value="{{commentText}}"
+        bindinput="onCommentInput"
+        bindconfirm="onCommentConfirm"
+        confirm-type="send"
+        confirm-hold="{{true}}"
+        cursor-spacing="20"
+        adjust-position="{{true}}"
+      />
+      <button class="send" loading="{{submitting}}" bindtap="submitComment">发送</button>
+    </view>
+    <view wx:if="{{comments.length === 0}}" class="empty small">还没有评论。</view>
+    <view wx:for="{{comments}}" wx:key="id" class="comment">
+      <image class="comment-avatar" src="{{item.authorSnapshot.avatar}}" mode="aspectFill" />
+      <view class="comment-main">
+        <view class="row space-between">
+          <view class="comment-author">{{item.authorSnapshot.nickname}}</view>
+          <view class="muted comment-time">{{item.createdAtText}}</view>
+        </view>
+        <view class="comment-content">
+          <text wx:if="{{item.replyToNickname}}" class="reply-name">回复 @{{item.replyToNickname}}：</text>{{item.content}}
+        </view>
+        <view class="comment-links">
+          <text data-id="{{item.id}}" bindtap="startReply">回复</text>
+          <text wx:if="{{item.isMine}}" data-id="{{item.id}}" bindtap="deleteComment">删除</text>
+          <text wx:else data-id="{{item.id}}" bindtap="reportComment">举报</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

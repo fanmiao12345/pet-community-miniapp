@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="card">
+    <view class="avatar-edit" bindtap="chooseAvatar">
+      <image class="big-avatar" src="{{avatar}}" mode="aspectFill" />
+      <view class="muted">点击更换头像</view>
+    </view>
+    <view class="form-item">
+      <text class="form-label">昵称</text>
+      <input class="input nickname-input" maxlength="20" value="{{nickname}}" bindinput="onNickname" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">个人简介</text>
+      <textarea class="textarea" maxlength="120" value="{{bio}}" bindinput="onBio" />
+    </view>
+    <button class="primary-button" loading="{{saving}}" bindtap="save">保存</button>
+  </view>
+</view>

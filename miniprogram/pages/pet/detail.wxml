@@ -1,0 +1,12 @@
+<view class="container" wx:if="{{pet}}">
+  <view class="card pet-profile">
+    <image class="pet-avatar" src="{{pet.avatar}}" mode="aspectFill" />
+    <view class="pet-name">{{pet.name}}</view>
+    <view class="muted">{{pet.breed || '未填写品种'}} · {{pet.species === 'cat' ? '猫' : pet.species === 'dog' ? '狗' : '其他'}}</view>
+    <view class="bio">{{pet.bio || '还没有填写简介。'}}</view>
+    <view wx:if="{{pet.birthday}}" class="birthday">生日：{{pet.birthday}}</view>
+  </view>
+  <view class="section-title timeline-title">成长时间线</view>
+  <post-card wx:for="{{posts}}" wx:key="id" post="{{item}}" bind:open="openPost" bind:author="openAuthor" bind:like="likePost" bind:favorite="favoritePost" />
+  <view wx:if="{{posts.length === 0}}" class="empty">还没有关联动态。</view>
+</view>

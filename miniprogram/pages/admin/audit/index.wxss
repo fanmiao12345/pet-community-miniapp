@@ -1,0 +1,6 @@
+.log-card { margin-bottom: 20rpx; }
+.action { font-weight: 700; }
+.time { font-size: 22rpx; }
+.target { margin-top: 16rpx; word-break: break-all; }
+.detail { margin-top: 10rpx; line-height: 1.6; word-break: break-all; }
+.admin { margin-top: 12rpx; font-size: 22rpx; }

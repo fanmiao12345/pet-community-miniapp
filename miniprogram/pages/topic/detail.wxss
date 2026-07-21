@@ -1,0 +1,2 @@
+.intro { display: flex; align-items: center; }
+.icon { font-size: 52rpx; margin-right: 20rpx; }

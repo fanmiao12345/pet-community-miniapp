@@ -1,0 +1,15 @@
+node_modules/
+.tmp-test/
+dist/
+.DS_Store
+*.log
+miniprogram_npm/
+project.private.config.json
+.env
+.env.*
+
+# ZCode 会话缓存(含本地工作产物,不应入库)
+.zcode/
+
+# 临时图片(调试时下载的参考图)
+.tmp-*.png

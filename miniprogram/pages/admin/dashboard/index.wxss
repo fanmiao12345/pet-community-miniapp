@@ -1,0 +1,8 @@
+.stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16rpx; }
+.stat { text-align: center; }
+.number { font-size: 52rpx; font-weight: 700; margin-bottom: 8rpx; }
+.warning .number { color: #d85b3d; }
+.menu { margin-top: 24rpx; padding: 0 24rpx; }
+.menu-item { display: flex; justify-content: space-between; padding: 28rpx 0; border-bottom: 1rpx solid #f0f1f2; }
+.menu-item:last-child { border-bottom: 0; }
+.arrow { color: #a0a5ac; font-size: 36rpx; }

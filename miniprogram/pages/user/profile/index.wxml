@@ -1,0 +1,39 @@
+<view class="container" wx:if="{{user}}">
+  <view class="profile-card card">
+    <image class="profile-avatar" src="{{user.avatar}}" mode="aspectFill" />
+    <view class="profile-main">
+      <view class="profile-name">{{user.nickname}}</view>
+      <view class="muted profile-bio">{{user.bio || '这位宠友还没有填写简介。'}}</view>
+      <view class="relation-row">
+        <view class="relation" data-mode="following" bindtap="goRelations"><text class="relation-number">{{user.followingCount}}</text> 关注</view>
+        <view class="relation" data-mode="followers" bindtap="goRelations"><text class="relation-number">{{user.followerCount}}</text> 粉丝</view>
+      </view>
+    </view>
+    <button wx:if="{{!user.isMe && !blocked}}" class="follow-button {{user.followedByMe ? 'following' : ''}}" bindtap="followUser">{{user.followedByMe ? '已关注' : '+ 关注'}}</button>
+  </view>
+
+  <view wx:if="{{!user.isMe}}" class="user-actions card">
+    <button class="secondary-button" bindtap="blockUser">{{blocked ? '解除拉黑' : '拉黑用户'}}</button>
+    <button class="secondary-button danger-text" bindtap="reportUser">举报用户</button>
+  </view>
+
+  <view wx:if="{{blocked}}" class="empty card">你已拉黑该用户。解除拉黑后可查看其宠物和动态。</view>
+
+  <block wx:else>
+    <view class="section-title">TA 的宠物</view>
+    <scroll-view wx:if="{{pets.length}}" class="pet-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="pet-row">
+        <view wx:for="{{pets}}" wx:key="id" class="pet-card card" data-id="{{item.id}}" bindtap="openPet">
+          <image class="pet-avatar" src="{{item.avatar}}" mode="aspectFill" lazy-load="{{true}}" />
+          <view class="pet-name">{{item.name}}</view>
+          <view class="muted pet-breed">{{item.breed}}</view>
+        </view>
+      </view>
+    </scroll-view>
+    <view wx:else class="empty card small-empty">还没有公开的宠物档案。</view>
+
+    <view class="section-title post-title">TA 的动态</view>
+    <view wx:if="{{posts.length === 0}}" class="empty card small-empty">还没有发布动态。</view>
+    <post-card wx:for="{{posts}}" wx:key="id" post="{{item}}" bind:open="openPost" bind:author="openAuthor" bind:like="likePost" bind:favorite="favoritePost" />
+  </block>
+</view>

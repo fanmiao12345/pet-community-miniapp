@@ -1,0 +1,12 @@
+.tabs { display: flex; background: #fff; border-radius: 16rpx; padding: 8rpx; margin-bottom: 20rpx; }
+.tab { flex: 1; text-align: center; padding: 16rpx 8rpx; color: #7a7f87; }
+.tab.active { background: #fff2ee; color: #d85b3d; border-radius: 12rpx; font-weight: 650; }
+.reason { font-weight: 650; }
+.summary { margin-top: 18rpx; line-height: 1.55; }
+.detail, .meta { margin-top: 12rpx; }
+.actions { display: flex; gap: 16rpx; margin-top: 20rpx; }
+.actions button { flex: 1; margin: 0; font-size: 24rpx; }
+.approve { background: #eaf8ef; color: #2f7d4b; }
+.dismiss { background: #f3f4f5; color: #656b73; }
+.actions button::after { border: 0; }
+.resolution { margin-top: 18rpx; color: #2f7d4b; }

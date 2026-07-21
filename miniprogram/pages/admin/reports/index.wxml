@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="tabs">
+    <view class="tab {{status === 'pending' ? 'active' : ''}}" data-status="pending" bindtap="switchStatus">待处理</view>
+    <view class="tab {{status === 'resolved' ? 'active' : ''}}" data-status="resolved" bindtap="switchStatus">已处理</view>
+    <view class="tab {{status === 'dismissed' ? 'active' : ''}}" data-status="dismissed" bindtap="switchStatus">已驳回</view>
+  </view>
+  <view wx:if="{{reports.length === 0}}" class="empty card">当前没有举报。</view>
+  <view wx:for="{{reports}}" wx:key="id" class="card report-card">
+    <view class="row space-between"><view class="reason">{{item.reason}}</view><view class="chip">{{item.targetType}}</view></view>
+    <view class="summary">{{item.targetSummary}}</view>
+    <view wx:if="{{item.detail}}" class="muted detail">{{item.detail}}</view>
+    <view class="muted meta">举报人：{{item.reporterSnapshot.nickname || item.reporterId}}</view>
+    <view wx:if="{{status === 'pending'}}" class="actions">
+      <button class="approve" data-id="{{item.id}}" data-action="resolved" bindtap="handle">处理</button>
+      <button class="dismiss" data-id="{{item.id}}" data-action="dismissed" bindtap="handle">驳回</button>
+    </view>
+    <view wx:else class="resolution">{{item.resolution}}</view>
+  </view>
+</view>

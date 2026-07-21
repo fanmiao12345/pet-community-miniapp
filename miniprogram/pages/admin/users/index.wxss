@@ -1,0 +1,7 @@
+.user-card { display: flex; align-items: center; }
+.avatar { width: 80rpx; height: 80rpx; border-radius: 50%; margin-right: 16rpx; }
+.user-main { flex: 1; min-width: 0; }
+.name { font-weight: 650; }
+.admin-badge { margin-left: 10rpx; padding: 3rpx 9rpx; border-radius: 999rpx; background: #fff2ee; color: #d85b3d; font-size: 20rpx; }
+.manage { margin: 0 0 0 16rpx; font-size: 24rpx; background: #f3f4f5; color: #50555c; }
+.manage::after { border: 0; }

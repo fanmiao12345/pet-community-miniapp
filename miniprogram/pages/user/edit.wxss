@@ -1,0 +1,5 @@
+.avatar-edit { text-align: center; margin-bottom: 32rpx; }
+.big-avatar { width: 160rpx; height: 160rpx; border-radius: 50%; display: block; margin: 0 auto 12rpx; }
+/* 昵称 input 用固定高度 + line-height=height 强制文字垂直居中,
+   避免 iOS WebKit 在 input 带初始值首次渲染时把文字顶部对齐的 bug。 */
+.nickname-input { height: 88rpx; padding: 0 24rpx; line-height: 88rpx; }

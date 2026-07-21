@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="card">
+    <view class="avatar-edit" bindtap="chooseAvatar">
+      <image class="pet-avatar" src="{{avatar}}" mode="aspectFill" />
+      <view class="muted">点击选择宠物头像</view>
+    </view>
+    <view class="form-item"><text class="form-label">名称 *</text><input class="input" maxlength="20" placeholder="例如：苗苗" value="{{name}}" bindinput="onName" /></view>
+    <view class="form-item"><text class="form-label">类型</text><picker range="{{speciesOptions}}" range-key="label" value="{{speciesIndex}}" bindchange="onSpecies"><view class="picker-box">{{speciesOptions[speciesIndex].label}}</view></picker></view>
+    <view class="form-item"><text class="form-label">性别</text><picker range="{{genderOptions}}" range-key="label" value="{{genderIndex}}" bindchange="onGender"><view class="picker-box">{{genderOptions[genderIndex].label}}</view></picker></view>
+    <view class="form-item"><text class="form-label">品种</text><input class="input" maxlength="30" placeholder="可选" value="{{breed}}" bindinput="onBreed" /></view>
+    <view class="form-item"><text class="form-label">生日</text><picker mode="date" value="{{birthday}}" bindchange="onBirthday"><view class="picker-box">{{birthday || '请选择日期'}}</view></picker></view>
+    <view class="form-item"><text class="form-label">简介</text><textarea class="textarea" maxlength="120" placeholder="性格、爱好或小故事" value="{{bio}}" bindinput="onBio" /></view>
+    <button class="primary-button" loading="{{saving}}" bindtap="save">保存宠物档案</button>
+  </view>
+</view>

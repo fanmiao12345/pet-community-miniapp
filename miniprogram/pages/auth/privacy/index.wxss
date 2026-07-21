@@ -1,0 +1,13 @@
+.privacy-page { height: 100vh; box-sizing: border-box; background: #f6f7f8; }
+.privacy-card { margin: 28rpx; padding: 38rpx 32rpx 64rpx; border-radius: 24rpx; background: #fff; }
+.title { font-size: 40rpx; font-weight: 700; color: #25272b; }
+.updated { margin-top: 10rpx; color: #969ba3; font-size: 23rpx; }
+.section-title { margin-top: 36rpx; font-size: 30rpx; font-weight: 650; color: #31343a; }
+.paragraph { margin-top: 14rpx; color: #626872; font-size: 27rpx; line-height: 1.8; }
+.back { margin-top: 48rpx; border-radius: 999rpx; background: #ff7654 !important; }
+@media (prefers-color-scheme: dark) {
+  .privacy-page { background: #141516; }
+  .privacy-card { background: #202225; }
+  .title, .section-title { color: #f3f4f6; }
+  .updated, .paragraph { color: #b0b5bd; }
+}

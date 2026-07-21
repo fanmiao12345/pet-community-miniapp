@@ -1,0 +1,8 @@
+.user-row { display: flex; align-items: center; }
+.user-avatar { width: 92rpx; height: 92rpx; border-radius: 50%; background: #eceff1; }
+.user-main { flex: 1; min-width: 0; margin-left: 18rpx; }
+.user-name { font-weight: 650; }
+.user-bio { margin-top: 6rpx; font-size: 23rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.follow-button { height: 60rpx; margin: 0; padding: 0 30rpx; border-radius: 999rpx; background: #ff7a59; color: white; font-size: 25rpx; line-height: 60rpx; }
+.follow-button::after { border: 0; }
+.follow-button.following { background: #f0f1f2; color: #666c74; }

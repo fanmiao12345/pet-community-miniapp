@@ -1,0 +1,75 @@
+<view class="login-page">
+  <view class="decor decor-one"></view>
+  <view class="decor decor-two"></view>
+
+  <view class="brand-area">
+    <view class="brand-badge">首次进入 · 安全验证</view>
+    <view class="pet-visual">
+      <view class="pet-bubble bubble-cat">🐱</view>
+      <view class="paw-logo">🐾</view>
+      <view class="pet-bubble bubble-dog">🐶</view>
+    </view>
+    <view class="brand-name">宠友圈</view>
+    <view class="brand-title">先验证手机号<br />再认识更多宠友</view>
+    <view class="brand-subtitle">记录毛孩子的每一个可爱瞬间，交流真实养宠经验</view>
+  </view>
+
+  <view class="login-card">
+    <view class="card-header">
+      <view>
+        <view class="login-title">手机号快捷登录</view>
+        <view class="login-desc">仅用于识别账号和保障社区安全</view>
+      </view>
+      <view class="secure-mark">安全</view>
+    </view>
+
+    <view class="benefits">
+      <view class="benefit">
+        <view class="benefit-icon privacy-icon">隐</view>
+        <view><view class="benefit-title">隐私保护</view><view class="benefit-desc">社区页面不会公开展示手机号</view></view>
+      </view>
+      <view class="benefit">
+        <view class="benefit-icon shield-icon">盾</view>
+        <view><view class="benefit-title">账号安全</view><view class="benefit-desc">减少异常账号与恶意互动</view></view>
+      </view>
+      <view class="benefit">
+        <view class="benefit-icon quick-icon">快</view>
+        <view><view class="benefit-title">一次授权</view><view class="benefit-desc">后续扫码进入无需重复操作</view></view>
+      </view>
+    </view>
+
+    <view class="agreement tap-scale" bindtap="toggleAgreement">
+      <view class="checkbox {{agreed ? 'checked' : ''}}">{{agreed ? '✓' : ''}}</view>
+      <view class="agreement-text">我已阅读并同意<text class="link" catchtap="openPrivacy">《隐私保护说明》</text></view>
+    </view>
+
+    <button
+      wx:if="{{isCloud}}"
+      class="phone-button"
+      type="primary"
+      open-type="getPhoneNumber"
+      bindgetphonenumber="authorizePhone"
+      loading="{{authorizing}}"
+      disabled="{{!agreed || authorizing || loading}}"
+      aria-label="授权微信绑定手机号并登录"
+    ><text>{{authorizing ? '正在验证…' : '授权手机号并进入'}}</text><text wx:if="{{!authorizing}}" class="button-arrow">→</text></button>
+
+    <button
+      wx:else
+      class="phone-button"
+      type="primary"
+      bindtap="simulateAuthorization"
+      loading="{{authorizing}}"
+      disabled="{{!agreed || authorizing || loading}}"
+      aria-label="模拟手机号授权并进入演示"
+    ><text>{{authorizing ? '正在验证…' : '模拟授权并进入'}}</text><text wx:if="{{!authorizing}}" class="button-arrow">→</text></button>
+
+    <view class="status-row">
+      <view class="status-dot {{loading || authorizing ? 'active' : ''}}"></view>
+      <view class="status">{{statusText}}</view>
+    </view>
+    <view wx:if="{{!isCloud}}" class="mock-tip">演示模式不会读取真实手机号</view>
+  </view>
+
+  <view class="bottom-note">登录即代表你愿意共同维护友善、真实的宠物社区</view>
+</view>

@@ -1,0 +1,17 @@
+{
+  "name": "pet-community-miniapp",
+  "version": "1.2.1",
+  "private": true,
+  "description": "微信原生小程序 + TypeScript + CloudBase 的宠物社区个人项目",
+  "scripts": {
+    "check": "node scripts/check-project.js",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "node scripts/test-contracts.js && node scripts/test-mock-runtime.js",
+    "verify": "npm run check && npm run typecheck && npm test",
+    "clean": "node -e \"require('fs').rmSync('.tmp-test',{recursive:true,force:true})\"",
+    "verify:ci": "npm run verify"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

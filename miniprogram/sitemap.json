@@ -1,0 +1,4 @@
+{
+  "desc": "个人演示项目",
+  "rules": [{ "action": "allow", "page": "*" }]
+}

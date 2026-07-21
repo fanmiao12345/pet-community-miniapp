@@ -1,0 +1,18 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "module": "CommonJS",
+    "outDir": "../.tmp-test",
+    "rootDir": "../miniprogram"
+  },
+  "include": [
+    "../miniprogram/models/**/*.ts",
+    "../miniprogram/config/**/*.ts",
+    "../miniprogram/utils/**/*.ts",
+    "../miniprogram/services/moderation.ts",
+    "../miniprogram/services/mock-seed.ts",
+    "../miniprogram/services/mock-repository.ts",
+    "../miniprogram/typings/**/*.d.ts"
+  ]
+}

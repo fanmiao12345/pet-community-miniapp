@@ -1,0 +1,9 @@
+.title-row .page-title { margin-bottom: 24rpx; }
+.add { background: #fff2ee; color: #d85b3d; border-radius: 999rpx; font-size: 24rpx; }
+.add::after { border: 0; }
+.pet-card { display: flex; align-items: center; }
+.pet-avatar { width: 132rpx; height: 132rpx; border-radius: 30rpx; }
+.pet-main { flex: 1; margin-left: 20rpx; min-width: 0; }
+.pet-name { font-size: 34rpx; font-weight: 700; }
+.bio { margin-top: 10rpx; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.arrow { color: #a0a5ac; font-size: 48rpx; }

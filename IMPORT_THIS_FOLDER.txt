@@ -1,0 +1,11 @@
+请在微信开发者工具中导入“当前文件夹”。
+
+正确特征：当前文件夹第一层应直接看到：
+- project.config.json
+- miniprogram
+- cloudfunctions
+- package.json
+
+不要导入它的上级目录，也不要只导入 miniprogram 子目录。
+
+导入前请先从微信开发者工具项目列表删除旧项目记录，然后重新导入当前文件夹。

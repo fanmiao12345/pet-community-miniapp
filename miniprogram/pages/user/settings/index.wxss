@@ -1,0 +1,10 @@
+.phone-card { display: flex; align-items: center; justify-content: space-between; }
+.verified { padding: 8rpx 18rpx; border-radius: 999rpx; color: #4e8d65; background: #edf8f0; font-size: 23rpx; }
+.privacy-card { line-height: 1.7; }
+.paragraph { margin-top: 14rpx; color: #656b73; font-size: 26rpx; }
+.privacy-link { margin-top: 24rpx; color: #ff7654; font-size: 26rpx; }
+.menu { padding: 0 24rpx; }
+.menu-item { display: flex; justify-content: space-between; padding: 28rpx 0; border-bottom: 1rpx solid #f0f1f2; }
+.menu-item:last-child { border-bottom: 0; }
+.danger { color: #b44236; }
+.arrow { color: #a0a5ac; font-size: 36rpx; }

@@ -1,0 +1,23 @@
+<scroll-view class="privacy-page" scroll-y>
+  <view class="privacy-card">
+    <view class="title">隐私保护说明</view>
+    <view class="updated">版本：1.2.0</view>
+
+    <view class="section-title">1. 手机号的用途</view>
+    <view class="paragraph">手机号用于完成账号验证、识别重复或异常账号、保障社区安全，以及在必要时处理账号申诉。手机号不会显示在个人主页、动态、评论或其他公开页面。</view>
+
+    <view class="section-title">2. 获取方式</view>
+    <view class="paragraph">只有在你主动点击“授权手机号并登录”并确认微信授权后，我们才会接收微信提供的手机号验证结果。</view>
+
+    <view class="section-title">3. 保存方式</view>
+    <view class="paragraph">系统保存手机号不可逆摘要、脱敏号码、国家或地区码及验证时间，用于账号校验；社区公开接口不会返回完整手机号。</view>
+
+    <view class="section-title">4. 其他信息</view>
+    <view class="paragraph">使用社区时还可能处理 OpenID、昵称、头像、宠物档案、动态、评论、互动、举报及安全审计记录，具体以正式上线时的小程序隐私保护指引为准。</view>
+
+    <view class="section-title">5. 删除与注销</view>
+    <view class="paragraph">你可以在“我的 → 设置与隐私”申请注销账号。注销后，手机号绑定信息将被清除或不可逆匿名化。</view>
+
+    <button class="back" type="primary" bindtap="goBack">我已了解</button>
+  </view>
+</scroll-view>

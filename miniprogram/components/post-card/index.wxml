@@ -1,0 +1,40 @@
+<view class="post-card card">
+  <view class="header">
+    <view class="author-entry" catchtap="openAuthor">
+      <view class="avatar-ring"><image class="avatar" src="{{post.authorSnapshot.avatar}}" mode="aspectFill" lazy-load="{{true}}" aria-label="{{post.authorSnapshot.nickname}}的头像" /></view>
+      <view class="header-info">
+        <view class="author-line"><text class="author">{{post.authorSnapshot.nickname}}</text><text wx:if="{{post.petSnapshot.name}}" class="pet-tag">和 {{post.petSnapshot.name}}</text></view>
+        <view class="meta">{{post.createdAtText}}</view>
+      </view>
+    </view>
+    <view wx:if="{{post.topicName}}" class="topic" bindtap="openPost"># {{post.topicName}}</view>
+  </view>
+
+  <view wx:if="{{post.moderationStatus !== 'approved'}}" class="moderation {{post.moderationStatus}}">{{post.moderationStatus === 'pending' ? '审核中 · 仅自己可见' : '未通过 · 仅自己可见'}}</view>
+
+  <view wx:if="{{post.content}}" class="content" bindtap="openPost">{{post.content}}</view>
+  <view wx:elif="{{post.images.length}}" class="content muted-content" bindtap="openPost">分享了 {{post.images.length}} 张照片</view>
+
+  <view wx:if="{{post.images.length}}" class="image-grid image-count-{{post.images.length}}">
+    <image
+      wx:for="{{post.images}}"
+      wx:key="*this"
+      class="post-image"
+      src="{{item}}"
+      data-src="{{item}}"
+      mode="aspectFill"
+      lazy-load="{{true}}"
+      bindtap="previewImage"
+    />
+    <view wx:if="{{post.images.length > 4}}" class="image-more">+{{post.images.length - 4}}</view>
+  </view>
+
+  <view wx:if="{{post.moderationStatus !== 'approved'}}" class="moderation-note">{{post.moderationReason || '内容审核完成后才会进入公共信息流'}}</view>
+
+  <view wx:if="{{post.moderationStatus === 'approved'}}" class="actions">
+    <button class="action {{post.likedByMe ? 'active' : ''}}" bindtap="toggleLike" aria-label="{{post.likedByMe ? '取消点赞' : '点赞'}}"><text class="action-icon">{{post.likedByMe ? '♥' : '♡'}}</text><text>{{post.likeCount}}</text></button>
+    <button class="action" bindtap="openPost"><text class="action-icon">◌</text><text>{{post.commentCount}}</text></button>
+    <button class="action {{post.favoritedByMe ? 'active' : ''}}" bindtap="toggleFavorite" aria-label="{{post.favoritedByMe ? '取消收藏' : '收藏'}}"><text class="action-icon">{{post.favoritedByMe ? '★' : '☆'}}</text><text>{{post.favoriteCount}}</text></button>
+    <button class="detail-entry" bindtap="openPost">查看详情 <text>›</text></button>
+  </view>
+</view>

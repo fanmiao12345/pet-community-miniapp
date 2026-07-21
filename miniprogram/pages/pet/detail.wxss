@@ -1,0 +1,6 @@
+.pet-profile { text-align: center; }
+.pet-avatar { width: 220rpx; height: 220rpx; border-radius: 54rpx; }
+.pet-name { font-size: 42rpx; font-weight: 700; margin-top: 18rpx; }
+.bio { margin-top: 20rpx; line-height: 1.6; }
+.birthday { margin-top: 12rpx; color: #8a9099; }
+.timeline-title { margin: 30rpx 4rpx 16rpx; }

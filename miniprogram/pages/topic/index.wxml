@@ -1,0 +1,31 @@
+<view class="container topic-page">
+  <view class="topic-hero">
+    <view class="hero-copy">
+      <view class="eyebrow">DISCOVER TOPICS</view>
+      <view class="hero-title">找到同频的<br />养宠交流圈</view>
+      <view class="hero-desc">从日常记录到健康经验，每个话题都值得认真交流</view>
+    </view>
+    <view class="hero-stack">
+      <view class="stack-card stack-one">#</view>
+      <view class="stack-card stack-two">🐾</view>
+      <view class="stack-card stack-three">♡</view>
+    </view>
+  </view>
+
+  <view class="section-bar">
+    <view><view class="section-name">热门话题</view><view class="section-desc">选择一个你感兴趣的方向</view></view>
+    <view class="topic-total">{{topics.length}} 个</view>
+  </view>
+
+  <view wx:for="{{topics}}" wx:key="id" class="card topic-card" data-id="{{item.id}}" bindtap="openTopic">
+    <view class="icon-shell"><view class="icon">{{item.icon}}</view></view>
+    <view class="topic-main">
+      <view class="topic-title-row"><view class="topic-name">{{item.name}}</view><view class="hot-tag">HOT</view></view>
+      <view class="topic-description">{{item.description}}</view>
+      <view class="topic-action">进入话题 <text>→</text></view>
+    </view>
+    <view class="decor-circle"></view>
+  </view>
+
+  <view wx:if="{{topics.length === 0}}" class="card empty"><text class="empty-icon">#</text><view class="empty-title">暂时没有话题</view><view class="empty-desc">管理员创建话题后会显示在这里</view></view>
+</view>

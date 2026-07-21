@@ -1,0 +1,23 @@
+.profile-card { display: flex; align-items: flex-start; }
+.profile-avatar { width: 120rpx; height: 120rpx; border-radius: 50%; background: #eceff1; }
+.profile-main { flex: 1; min-width: 0; margin-left: 20rpx; }
+.profile-name { font-size: 36rpx; font-weight: 700; }
+.profile-bio { margin-top: 8rpx; line-height: 1.5; }
+.relation-row { display: flex; gap: 28rpx; margin-top: 16rpx; color: #777d85; font-size: 24rpx; }
+.relation-number { color: #202124; font-weight: 700; }
+.follow-button { height: 64rpx; margin: 0; padding: 0 32rpx; border-radius: 999rpx; background: #ff7a59; color: white; font-size: 26rpx; line-height: 64rpx; }
+.follow-button::after { border: 0; }
+.follow-button.following { background: #f0f1f2; color: #666c74; }
+.pet-scroll { width: 100%; white-space: nowrap; }
+.pet-row { display: inline-flex; gap: 16rpx; padding-right: 24rpx; }
+.pet-card { box-sizing: border-box; width: 220rpx; margin-bottom: 6rpx; text-align: center; }
+.pet-avatar { width: 120rpx; height: 120rpx; border-radius: 50%; }
+.pet-name { margin-top: 12rpx; font-weight: 650; }
+.pet-breed { margin-top: 4rpx; font-size: 22rpx; overflow: hidden; text-overflow: ellipsis; }
+.post-title { margin-top: 30rpx; }
+.small-empty { padding: 48rpx 24rpx; }
+.user-actions { display: flex; gap: 16rpx; padding: 18rpx; }
+.user-actions button { flex: 1; margin: 0; }
+.secondary-button { background: #f4f5f6; color: #50555c; font-size: 25rpx; }
+.secondary-button::after { border: 0; }
+.danger-text { color: #b44236; }

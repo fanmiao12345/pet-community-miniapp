@@ -1,0 +1,16 @@
+<view class="container">
+  <view class="row space-between title-row">
+    <view class="page-title">我的宠物</view>
+    <button class="add" bindtap="createPet">＋ 新建</button>
+  </view>
+  <view wx:for="{{pets}}" wx:key="id" class="card pet-card" data-id="{{item.id}}" bindtap="openPet">
+    <image class="pet-avatar" src="{{item.avatar}}" mode="aspectFill" lazy-load="{{true}}" />
+    <view class="pet-main">
+      <view class="pet-name">{{item.name}}</view>
+      <view class="muted">{{item.breed || '未填写品种'}} · {{item.species === 'cat' ? '猫' : item.species === 'dog' ? '狗' : '其他'}}</view>
+      <view class="bio">{{item.bio}}</view>
+    </view>
+    <view class="arrow">›</view>
+  </view>
+  <view wx:if="{{pets.length === 0}}" class="empty">还没有宠物档案。</view>
+</view>

@@ -1,0 +1,10 @@
+<view class="container">
+  <view wx:if="{{users.length === 0}}" class="empty card">黑名单为空。</view>
+  <view wx:for="{{users}}" wx:key="id" class="card user-row">
+    <view class="user-main" data-id="{{item.id}}" bindtap="openUser">
+      <image class="avatar" src="{{item.avatar}}" mode="aspectFill" lazy-load="{{true}}" />
+      <view><view class="name">{{item.nickname}}</view><view class="muted">{{item.bio}}</view></view>
+    </view>
+    <button class="unblock" data-id="{{item.id}}" bindtap="unblock">解除</button>
+  </view>
+</view>

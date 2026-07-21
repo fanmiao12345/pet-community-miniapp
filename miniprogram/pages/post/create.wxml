@@ -1,0 +1,79 @@
+<view class="container publish-page">
+  <view class="publish-hero">
+    <view>
+      <view class="eyebrow">SHARE A MOMENT</view>
+      <view class="publish-title">分享毛孩子的<br />今日瞬间</view>
+      <view class="publish-subtitle">真实、有用、友善的内容会让社区更温暖</view>
+    </view>
+    <view class="publish-visual">📸<view class="visual-paw">🐾</view></view>
+  </view>
+
+  <view wx:if="{{pets.length === 0}}" class="card empty-pet">
+    <view class="empty-pet-icon">🐶</view>
+    <view class="section-title">先创建一只宠物</view>
+    <view class="muted empty-pet-desc">动态会同时沉淀到宠物成长时间线，方便以后回看。</view>
+    <button class="primary-button create-pet-button" bindtap="goCreatePet">创建宠物档案</button>
+  </view>
+
+  <block wx:else>
+    <view class="card compose-card">
+      <view class="card-label-row"><view class="card-index">01</view><view><view class="section-title compact-title">写下今天的故事</view><view class="section-caption">可记录日常，也可以分享养宠经验</view></view></view>
+      <textarea class="story-textarea" maxlength="1000" placeholder="例如：今天第一次带豆包去草地，它对每一片叶子都充满好奇……" value="{{content}}" bindinput="onContentInput" />
+      <view class="counter {{content.length > 900 ? 'warning' : ''}}">{{content.length}} / 1000</view>
+    </view>
+
+    <view class="card relation-card">
+      <view class="card-label-row"><view class="card-index green">02</view><view><view class="section-title compact-title">关联信息</view><view class="section-caption">可选,让内容更容易被合适的宠友看到</view></view></view>
+      <view class="select-grid">
+        <picker range="{{pets}}" range-key="name" value="{{petIndex < 0 ? 0 : petIndex}}" bindchange="onPetChange">
+          <view class="select-tile">
+            <view class="select-icon pet-icon">🐾</view>
+            <view class="select-copy"><view class="select-label">关联宠物</view><view class="select-value {{petIndex < 0 ? 'placeholder' : ''}}">{{petIndex >= 0 ? pets[petIndex].name : '不关联'}}</view></view>
+            <view class="select-arrow">⌄</view>
+          </view>
+        </picker>
+        <picker range="{{topics}}" range-key="name" value="{{topicIndex < 0 ? 0 : topicIndex}}" bindchange="onTopicChange">
+          <view class="select-tile">
+            <view class="select-icon topic-icon">#</view>
+            <view class="select-copy"><view class="select-label">选择话题</view><view class="select-value {{topicIndex < 0 ? 'placeholder' : ''}}">{{topicIndex >= 0 ? topics[topicIndex].name : '不选择'}}</view></view>
+            <view class="select-arrow">⌄</view>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="card media-card">
+      <view class="card-label-row media-head">
+        <view class="card-index yellow">03</view>
+        <view class="media-heading"><view class="section-title compact-title">添加图片</view><view class="section-caption">最多 9 张，第一张将作为封面</view></view>
+        <view class="image-count">{{images.length}} / 9</view>
+      </view>
+      <view class="image-grid">
+        <view wx:for="{{images}}" wx:key="*this" class="image-wrap">
+          <image class="selected-image" src="{{item}}" mode="aspectFill" />
+          <view class="image-order">{{index + 1}}</view>
+          <view class="remove" data-index="{{index}}" bindtap="removeImage">×</view>
+        </view>
+        <view wx:if="{{images.length < 9}}" class="add-image" bindtap="chooseImages">
+          <view class="add-icon">＋</view>
+          <view class="add-text">添加图片</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="notice-card">
+      <view class="notice-icon">!</view>
+      <view class="notice-copy"><view class="notice-title">发布提示</view><view class="notice-desc">社区内容不能替代执业兽医诊断。云模式下图片会先进入审核，仅自己可见。</view></view>
+    </view>
+
+    <view wx:if="{{progressText}}" class="progress-panel"><view class="progress-dot"></view>{{progressText}}</view>
+
+    <view class="card publish-action-card">
+      <view class="publish-summary">
+        <view class="summary-title">准备好了吗？</view>
+        <view class="summary-desc">已填写 {{content.length}} 字 · 已添加 {{images.length}} 张图片</view>
+      </view>
+      <button class="publish-button" loading="{{submitting}}" disabled="{{submitting}}" bindtap="submit">{{submitting ? '发布中…' : '发布动态'}}</button>
+    </view>
+  </block>
+</view>
